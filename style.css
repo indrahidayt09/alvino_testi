@@ -1,0 +1,233 @@
+:root {
+    --bg-dark: #0f1115;
+    --card-bg: #1c1f26;
+    --brand-color: #c3ff00;
+    --text-light: #ffffff;
+    --text-muted: #9ba1a6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.5;
+    font-size: 18px; /* Teks besar agar mudah dibaca */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: linear-gradient(180deg, #181b21 0%, var(--bg-dark) 100%);
+    border-bottom: 1px solid #2a2e37;
+}
+
+.badge {
+    display: inline-block;
+    background-color: rgba(195, 255, 0, 0.15);
+    color: var(--brand-color);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(195, 255, 0, 0.3);
+}
+
+.header h1 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #2a2e37;
+    margin: 40px 0;
+}
+
+.section-title {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section-title h2 {
+    font-size: 1.6rem;
+    color: var(--brand-color);
+    margin-bottom: 5px;
+}
+
+.section-title p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.grid-gallery-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.grid-gallery-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.img-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333842;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Indikator visual bahwa gambar bisa diklik */
+.img-wrapper::after {
+    content: '🔍 Klik untuk zoom';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.zoomable {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.zoomable:active {
+    transform: scale(0.96);
+}
+
+.bottom-spacer {
+    height: 110px;
+}
+
+/* Modal Lightbox (Tampilan saat gambar di-zoom) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 95%;
+    max-height: 85vh;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--brand-color);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10000;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Footer & Tombol */
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(20, 23, 28, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-top: 1px solid #2a2e37;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+}
+
+.cta-button {
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--brand-color);
+    color: #000000;
+    text-align: center;
+    padding: 18px 20px; 
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 20px rgba(195, 255, 0, 0.25);
+    transition: all 0.2s ease;
+}
+
+.cta-button:active {
+    background-color: #aadd00;
+    transform: translateY(3px);
+    box-shadow: 0 2px 10px rgba(195, 255, 0, 0.15);
+}
